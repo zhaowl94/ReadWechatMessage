@@ -1,0 +1,16 @@
+参考：
+http://www.jianshu.com/p/68e9f22f9680
+http://www.jianshu.com/p/07a8d87e698b
+
+1、用itunes备份手机。得到所有备份数据。
+2、用备份读取软件，读取备份文件。软件下载地址：
+http://www.iphonebackupextractor.com/free-download/
+微信信息文件位置：Application/com.tencent.xin/{UUID}/DB/MM.sqlite
+微信好用列表位置：Application/com.tencent.xin/{UUID}/DB/WCDB_Contact.sqlite
+{UUID}是一串数字或字符，是用户名ID。猜测与用户名的md5相关。
+3、用sqlite读取工具查看微信备份文件。软件下载地址：
+https://sqlitestudio.pl/index.rvt
+4、好友列表中，微信名或备注名的md5码，是用来寻找对应的微信信息列表的关键。找到对应的列表后，导出成csv文件。
+5、csv文件存在一些bug，先用excel转存成xlsx文件。
+6、用matlab导入xlsx文件，用脚本处理文件。现有的脚本：
+1）AnalysisWeChatMessage.m	分析双方的消息长度对比
